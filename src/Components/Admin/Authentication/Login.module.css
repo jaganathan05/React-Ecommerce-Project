@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'Lemon_Milk_Bold';
+    src: url('/public/Fonts/LEMONMILK-Bold.otf');
+}
+
+.login-box{
+
+    border: 2px solid rgb(199, 182, 182);
+    border-radius: 10px;
+    width: 500px;
+    height : auto;
+    padding: 20px;
+    background-color: rgb(28, 235, 155);
+   
+
+}
+
+.login-box h2{
+    color:rgb(24, 58, 211);
+    font-family: 'Lemon_Milk_Bold';
+}
+
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    margin: 60px;
+    
+}
+
+
+.input.invalid{
+    background-color: rgb(243, 26, 55);
+}
+.link{
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.link1{
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(253, 10, 10);
+    font-size: 20px;
+}
+.login-box p{
+    color: yellow;
+    font-size: 20px;
+}

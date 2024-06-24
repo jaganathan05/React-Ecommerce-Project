@@ -1,0 +1,30 @@
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .product-card {
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .sale-price {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .mrp-price {
+    text-decoration: line-through;
+    color: grey;
+    margin-left: 10px;
+  }
+  
+  .offer {
+    color: red;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
