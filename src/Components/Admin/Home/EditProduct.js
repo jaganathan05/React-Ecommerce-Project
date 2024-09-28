@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect ,useMemo} from "react";
 import { Button, FloatingLabel, Form , Col , Row } from "react-bootstrap";
 import { useParams, useHistory } from "react-router-dom";
 import NavBar from "../Layout/Navbar";
@@ -23,12 +23,12 @@ function EditProduct() {
   const history = useHistory();
   const AdminToken = useSelector(state=> state.AdminAuth.Token);
 
-  const subcategoryOptions = {
+  const subcategoryOptions = useMemo(() => ({
     "Top Wear": ["T-Shirts", "Shirts"],
     "Bottom Wear": ["Jeans", "Trackpants"],
     "Accessories": ["Bags", "Belts", "Watches"],
     "Inner & Sleep Wear": ["Nightwear", "Underwear"]
-  };
+  }), []);
 
   const handleCategoryChange = (event) => {
     const selectedCategory = event.target.value;

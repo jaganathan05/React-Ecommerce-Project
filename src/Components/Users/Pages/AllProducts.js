@@ -1,78 +1,71 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+//import Form from 'react-bootstrap/Form';
 import './ProductList.css'; 
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Cartactions , updateCart } from '../../../Store/Slices/Cart';
 
-function AdminProductList() {
+
+function ProductList() {
   const history = useHistory();
-
+  const dispatch = useDispatch()
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const selectedSubcategory = useSelector(state => state.Catagory.subcategory);
-  const AdminToken = useSelector(state => state.AdminAuth.Token);
-
+  const UserToken = useSelector(state => state.Auth.Token);
+  const cartitems = useSelector(state => state.Cart.CartItems);
+ 
+  
   const handleCardClick = (productId) => {
-    history.push(`/admin/product/${productId}`);
+    history.push(`/product/${productId}`);
   };
 
   const filterProducts = useCallback((subcategory) => {
+    
     if (subcategory) {
       setFilteredProducts(products.filter(product => product.subcategory === subcategory));
     } else {
       setFilteredProducts(products);
     }
-  }, [products]);
+  },[products]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProducts = async () => { 
       try {
-        const response = await axios.get('http://localhost:4000/admin/products', {
+        const response = await axios.get('http://localhost:4000/products', {
           headers: {
-            Authorization: AdminToken
+            Authorization: UserToken
           }
         });
+      
         setProducts(response.data);
         setFilteredProducts(response.data);
+       
       } catch (error) {
         console.error('Failed to fetch products', error);
       }
     };
+
     fetchProducts();
-  }, [AdminToken]);
+  }, [UserToken]);
 
-  const handleEditClick = (productId) => {
-    history.push(`/admin/edit-product/${productId}`);
-  };
+  function additemtocart(product){
+dispatch(Cartactions.addCartItems(product))
+dispatch(updateCart({cartitems, UserToken}))
 
-  const handleDeleteClick = async (productId) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this product?");
-    if (confirmDelete) {
-      try {
-        const response = await axios.delete(`http://localhost:4000/admin/product/${productId}`, {
-          headers: {
-            Authorization: AdminToken
-          }
-        });
-        if (response) {
-          setProducts(products.filter(product => product._id !== productId));
-          setFilteredProducts(filteredProducts.filter(product => product._id !== productId));
-        }
-      } catch (error) {
-        console.error('Failed to delete product', error);
-      }
-    }
-  };
+
+  }
 
   useEffect(() => {
+    
     filterProducts(selectedSubcategory);
-  }, [selectedSubcategory, filterProducts]);
+  }, [selectedSubcategory,filterProducts]);
 
   return (
     <div>
-     
       <div className="product-grid">
         {filteredProducts.map(product => (
           <Card key={product._id} style={{ width: '18rem' }} className="product-card">
@@ -84,8 +77,8 @@ function AdminProductList() {
                 <span className="mrp-price">₹{product.mrpprice}</span>{' '}
                 <span className="offer">({product.offer}% OFF)</span>
               </Card.Text>
-              <Button variant="secondary" onClick={() => handleEditClick(product._id)}>Edit</Button>
-              <Button variant="danger" onClick={() => handleDeleteClick(product._id)}>Delete</Button>
+              <Button variant="secondary" onClick={()=>{additemtocart(product)}}>Add To Cart</Button>
+              
             </Card.Body>
           </Card>
         ))}
@@ -94,4 +87,4 @@ function AdminProductList() {
   );
 }
 
-export default AdminProductList;
+export default ProductList;

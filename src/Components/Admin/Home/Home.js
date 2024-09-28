@@ -1,16 +1,21 @@
+
+import Header from "../Layout/Header";
 import Navbar from "../Layout/Navbar";
+import AdminProductList from "./AllProducts";
 
 
 
-function Home(){
+function AdminHome(){
 
 return (
     <div>
-<Navbar/>
+        <Header/>
+        <Navbar/>
+        <AdminProductList/>
     </div>
     
 )
 
 }
 
-export default Home;
+export default AdminHome;

@@ -5,24 +5,18 @@ import { useDispatch } from 'react-redux';
 import {catagoryactions} from '../../../Store/Slices/Catagory';
 import Button from 'react-bootstrap/Button';
 
-function NavBar() {
-  const categories = {
-    "Top Wear": ["T-Shirts", "Shirts"],
-    "Bottom Wear": ["Jeans", "Trackpants"],
-    "Accessories": ["Bags", "Belts", "Watches"],
-    "Inner & Sleep Wear": ["Nightwear"]
-  };
+function NavBar({ categories }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSelect = (subcategory) => {
     dispatch(catagoryactions.setSubcategory(subcategory));
-    history.push('/admin/products');
+    history.push('/');
   };
 
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="/admin/products">Product Store</Navbar.Brand>
+      <Navbar.Brand href="/">Product Store</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">

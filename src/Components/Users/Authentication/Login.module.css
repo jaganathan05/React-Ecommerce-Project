@@ -1,0 +1,72 @@
+
+body{
+    background: #870000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #190A05, #870000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #190A05, #870000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.login-box{
+
+    border: 2px solid rgb(255, 253, 253);
+    border-radius: 10px;
+    width: 600px;
+    height : auto;
+    padding: 20px;
+    background: #F0C27B;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4B1248, #F0C27B);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4B1248, #F0C27B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.login-box h2{
+   
+    font-size: 30px;
+    color : yellow;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    margin: 60px;
+    
+}
+
+
+.input.invalid{
+    background-color: rgb(243, 26, 55);
+}
+
+.link1{
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Lemon Milk';
+    letter-spacing: 1px;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+    .login-box {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .login-container {
+        margin: 40px ;
+        margin-top: 30%;
+    }
+
+    .link1 {
+        
+        font-size: 15px;
+        
+    }
+}

@@ -1,9 +1,9 @@
 .product-grid {
     display: flex;
-    margin-top: 10px;
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-
+    margin-top: 300px;
   }
   
   .product-card {

@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 5px;
-  background-color: #fffcfc;
+  
 }
 
  .product-box{
@@ -16,6 +16,7 @@
 .product-box h2 {
   text-align: center;
   margin-bottom: 1.5rem;
+  color: white;
 }
 
 .mb-3 .form-floating {
